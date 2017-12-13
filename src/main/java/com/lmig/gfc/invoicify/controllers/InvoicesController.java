@@ -45,18 +45,14 @@ public class InvoicesController {
 	@GetMapping("/clients")
 	public ModelAndView chooseClient() {
 		ModelAndView mv = new ModelAndView("invoices/clients");
+
 		ArrayList<Company> clients = new ArrayList<Company>();
 		for (Company client : compRepo.findAll()) {
-			for (BillingRecord bill : billRepo.findAll()) {
-				if (bill.getClient().equals(client) && bill.getLineItem() == null) {
-					clients.add(client);
-				}
-
+			if (!billRepo.findByClientAndLineItemIsNull(client).isEmpty()) {
+				clients.add(client);
 			}
 		}
 		mv.addObject("clients", clients);
-		// mv.addObject("clients", compRepo.findAll());
-
 		return mv;
 	}
 

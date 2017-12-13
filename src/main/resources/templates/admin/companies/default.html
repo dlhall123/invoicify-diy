@@ -10,7 +10,8 @@
 
 	{{> common/_nav }}
 	<h1>Create a company</h1>
-	{{#errorMessage}}{{ . }}{{/errorMessage}}
+	{{#errorMessage}}
+	<h2 class="error">{{ . }}</h2>{{/errorMessage}}
 	<br>
 	<form method="post" action="/admin/companies">
 		<input type="text" name="name" placeholder="Company name">
