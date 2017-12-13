@@ -12,10 +12,9 @@ public class BillingRecordController {
 	@GetMapping("")
 	public ModelAndView list() {
 		ModelAndView mv = new ModelAndView("billing-records/list");
-		
-		// Get all the billing records and add them to the model and view with the key "records"
-		// Get all the companies and add them to the model and view with the key "companies"
-		
+
+
+
 		return mv;
 	}
 

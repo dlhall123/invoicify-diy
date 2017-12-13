@@ -14,13 +14,9 @@ public class FlatFeeBillingRecordController {
 
 	@PostMapping("")
 	public ModelAndView create(FlatFeeBillingRecord record, long clientId, Authentication auth) {
-		// Get the user from the auth.getPrincipal() method
-		// Find the client using the client id
-		// Set the client on the record
-		// Set the user on the record for the created by property
-		// Save the record
+
 
 		return new ModelAndView("redirect:/billing-records");
 	}
-	
+
 }
