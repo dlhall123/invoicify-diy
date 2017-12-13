@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+	{{#user.canSeeAdmin}}
 
 	{{> common/_nav }}
 	<h1>Create a company</h1>
-
 	{{#errorMessage}}{{ . }}{{/errorMessage}}
+	<br>
 	<form method="post" action="/admin/companies">
 		<input type="text" name="name" placeholder="Company name">
 		<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
@@ -19,5 +20,9 @@
 		{{/error}}
 		<button>Create</button>
 	</form>
+	{{/user.canSeeAdmin}}
+	{{^user.canSeeAdmin}}
+		<h1>Not Authorized</h1>
+	{{/user.canSeeAdmin}}
 </body>
 </html>

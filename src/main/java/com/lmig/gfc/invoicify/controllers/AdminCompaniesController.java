@@ -26,7 +26,7 @@ public class AdminCompaniesController {
 	public ModelAndView showDefault(@RequestParam(required = false) Boolean error) {
 		ModelAndView mv = new ModelAndView("admin/companies/default");
 		if (error != null && error) {
-			mv.addObject("errorMessage", "You must type a name, dork.");
+			mv.addObject("errorMessage", "You must type a name.");
 		}
 		return mv;
 	}
