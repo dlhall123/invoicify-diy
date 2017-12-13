@@ -13,11 +13,42 @@ button {
 button:hover {
 	background-color: fuchsia;
 }
+a{
+	text-decoration: none;
+}
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: red;
+}
 
 form {
 	display: inline;
 }
 .error {
-	color:white;
+	color:red;
 	font-style:italic;
 }
+table {
+	margin-top: 20px;
+	border: 1px solid white;
+	
+}
+
+th, td {
+	border-width: 1px; 
+	border-style: solid;
+	border-color: white;
+	padding: 6px;
+}
+
+th {
+	font-style:italic;
+	font-weight: bold;
+	background-color: orange;
+	color: black;
+}
+
+
