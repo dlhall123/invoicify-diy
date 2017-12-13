@@ -9,7 +9,10 @@
 
 	{{> common/_nav }}
 	<h1>Choose a client for which to create an invoice</h1>
-	
+	<br>
+	{{#clients.isEmpty}}
+	<h1>No clients with unassigned billing records</h1>
+	{{/clients.isEmpty}}
 	<ul>
 		{{#clients}}
 		<li>
@@ -17,6 +20,7 @@
 		</li>
 		{{/clients}}
 	</ul>
+	
 
 </body>
 </html>
