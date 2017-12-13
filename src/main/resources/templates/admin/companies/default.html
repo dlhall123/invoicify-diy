@@ -10,9 +10,13 @@
 	{{> common/_nav }}
 	<h1>Create a company</h1>
 
+	{{#errorMessage}}{{ . }}{{/errorMessage}}
 	<form method="post" action="/admin/companies">
 		<input type="text" name="name" placeholder="Company name">
 		<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
+		{{#error}}
+		<p>Error</p>
+		{{/error}}
 		<button>Create</button>
 	</form>
 </body>
