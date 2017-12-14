@@ -10,6 +10,8 @@ import com.lmig.gfc.invoicify.models.Company;
 
 @Repository
 public interface BillingRecordRepository extends JpaRepository<BillingRecord, Long> {
+	public List<BillingRecord> findByIdIn(long[] ids);
+
 	public List<BillingRecord> findByClientAndLineItemIsNull(Company client);
 
 }

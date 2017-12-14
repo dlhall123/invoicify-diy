@@ -1,6 +1,7 @@
 package com.lmig.gfc.invoicify.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -73,11 +74,13 @@ public class InvoicesController {
 		User user = (User) auth.getPrincipal();
 		Company client = compRepo.findOne(clientId);
 
-		ArrayList<BillingRecord> billRecords = new ArrayList<BillingRecord>();
+		List<BillingRecord> billRecords = billRepo.findByIdIn(recordIds);
 
-		for (Long id : recordIds) {
-			billRecords.add(billRepo.findOne(id));
-		}
+		// ArrayList<BillingRecord> billRecords = new ArrayList<BillingRecord>();
+
+		/*
+		 * for (Long id : recordIds) { billRecords.add(billRepo.findOne(id)); }
+		 */
 
 		ArrayList<InvoiceLineItem> invLineItems = new ArrayList<InvoiceLineItem>();
 

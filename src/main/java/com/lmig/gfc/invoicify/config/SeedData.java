@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.lmig.gfc.invoicify.models.Company;
-import com.lmig.gfc.invoicify.models.RateBasedBillingRecord;
 import com.lmig.gfc.invoicify.models.User;
 import com.lmig.gfc.invoicify.services.BillingRecordRepository;
 import com.lmig.gfc.invoicify.services.CompanyRepository;
@@ -44,8 +43,6 @@ public class SeedData {
 		comp = new Company();
 		comp.setName("Co2");
 		coRepo.save(comp);
-
-		RateBasedBillingRecord rb = new RateBasedBillingRecord();
 	}
 
 }

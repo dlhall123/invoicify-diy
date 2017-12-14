@@ -12,7 +12,7 @@ public abstract class BillingRecord {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 
 	private double amount;
 
@@ -34,11 +34,11 @@ public abstract class BillingRecord {
 	protected abstract double getTotal();
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		id = id;
 	}
 
 	public double getAmount() {
