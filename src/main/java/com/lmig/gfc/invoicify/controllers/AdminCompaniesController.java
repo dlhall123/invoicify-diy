@@ -28,6 +28,7 @@ public class AdminCompaniesController {
 		if (error != null && error) {
 			mv.addObject("errorMessage", "You must type a name.");
 		}
+		mv.addObject("companies", repo.findAll());
 		return mv;
 	}
 

@@ -14,13 +14,7 @@ public abstract class BillingRecord {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private double amount;
-
 	private String description;
-
-	private double rate;
-
-	private double quantity;
 
 	@ManyToOne
 	private User createdBy;
@@ -31,22 +25,14 @@ public abstract class BillingRecord {
 	@ManyToOne
 	private Company client;
 
-	protected abstract double getTotal();
+	public abstract double getTotal();
 
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
-		id = id;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
+		this.id = id;
 	}
 
 	public String getDescription() {
@@ -55,22 +41,6 @@ public abstract class BillingRecord {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public double getRate() {
-		return rate;
-	}
-
-	public void setRate(double rate) {
-		this.rate = rate;
-	}
-
-	public double getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
 	}
 
 	public User getCreatedBy() {

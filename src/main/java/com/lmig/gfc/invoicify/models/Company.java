@@ -16,7 +16,7 @@ public class Company {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 
 	@NotNull
 	@NotEmpty
@@ -26,11 +26,11 @@ public class Company {
 	List<Invoice> invoices;
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getName() {

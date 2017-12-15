@@ -1,18 +1,32 @@
 package com.lmig.gfc.invoicify.models;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class RateBasedBillingRecord extends BillingRecord {
 
-	@Transient
-	private double total;
+	public double rate;
+	public double quantity;
 
 	@Override
-	protected double getTotal() {
-		total = super.getRate() * super.getQuantity();
-		return total;
+	public double getTotal() {
+		return rate * quantity;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
 	}
 
 }
