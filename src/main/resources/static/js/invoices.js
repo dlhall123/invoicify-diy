@@ -5,6 +5,20 @@ $(function (){
 		e.preventDefault();
 		$('#show-invoice-list').hide();
 		$('#show-clients-list').show();
+		$.get("/api/invoices/clients", function(data){
+			console.log(data);
+			for(let i=0; i<data.length; i += 1){
+				$('clients-list')
+				.append(
+				`<li>
+					<a href="/invoices/clients/${data[i].id}">${data[i].name}</a>
+				</li>
+				`		
+				);
+				console.log(data[i].name);
+				console.log(data[i].id);
+			}
+		})
 	})
 	
 	
