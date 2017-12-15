@@ -6,11 +6,14 @@
 <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-
+	
 	{{> common/_nav }}
+	
+	<!-- HTML for the Invoice List -->
+	<div id="show-invoice-list">
 	<h1>Invoices</h1>
 	
-	<a href="/invoices/clients">Create a new invoice</a>
+	<a id="create-invoice" href="/invoices/clients">Create a new invoice</a>
 	
 	{{#showTable}}
 	<table>
@@ -36,6 +39,24 @@
 	{{^showTable}}
 	<div>There are no invoices.</div>
 	{{/showTable}}
-
+	</div>
+	
+	<!-- HTML for the client list -->
+	<div id="show-clients-list">
+	<h1>Choose a client for which to create an invoice</h1>
+	<br>
+	{{#clients.isEmpty}}
+	<h1 class="error">No clients with unassigned billing records</h1>
+	{{/clients.isEmpty}}
+	<ul>
+		{{#clients}}
+		<li>
+			<a href="/invoices/clients/{{ id }}">{{ name }}</a>
+		</li>
+		{{/clients}}
+	</ul>
+	</div>
+	<script src = "/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/js/invoices.js"></script>
 </body>
 </html>
