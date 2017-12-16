@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lmig.gfc.invoicify.models.BillingRecord;
 import com.lmig.gfc.invoicify.models.Company;
 import com.lmig.gfc.invoicify.services.BillingRecordRepository;
 import com.lmig.gfc.invoicify.services.CompanyRepository;
@@ -32,6 +34,12 @@ public class InvoicesApiController {
 			}
 		}
 		return clients;
+	}
+
+	@GetMapping("/clients/{clientId}")
+	public List<BillingRecord> createInvoice(@PathVariable Long clientId) {
+		Company client = compRepo.findOne(clientId);
+		return billRepo.findByClientAndLineItemIsNull(client);
 	}
 
 }

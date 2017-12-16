@@ -56,6 +56,56 @@
 		{{/clients}}
 	</ul>
 	</div>
+	<!-- Billing Records List -->
+	<div id="billing-records-list">
+	<form method="post" action=  "/invoices/clients/7">
+	  <input type="text"
+	         name="invoiceNumber"
+	         placeholder="invoice number (NaN)"
+	         required>
+	
+	  <table>
+	    <thead>
+	      <tr>
+	        <th></th>
+	        <th>Created by</th>
+	        <th>Description</th>
+	        <th>Client</th>
+	        <th>Fee</th>
+	        <th>Rate</th>
+	        <th>Quantity</th>
+	        <th>Total</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      {{#records}}
+	        <tr>
+	          <td>
+	            <input type="checkbox"
+	                   value="{{ id }}"
+	                   name="recordIds">
+	          </td>
+	          <td>{{ createdBy.username }}</td>
+	          <td>{{ description }}</td>
+	          <td>{{ client.name }}</td>
+	          <td>${{#amount}}{{ amount }}{{/amount}}</td>
+	          <td>${{#rate}}{{ rate }}{{/rate}}</td>
+	          <td>{{#quantity}}{{ quantity }}{{/quantity}}</td>
+	          <td>${{ total }}</td>
+	         </tr>
+	      {{/records}}
+	    </tbody>  
+	  </table>
+	
+	
+	  <button>Create the invoice</button>
+	  
+	  <input type="hidden"
+	         name="{{ _csrf.parameterName }}"
+	         value="{{ _csrf.token }}">
+	
+	</form>	
+	</div>
 	<script src = "/webjars/jquery/3.2.1/jquery.min.js"></script>
 	<script src="/js/invoices.js"></script>
 </body>
