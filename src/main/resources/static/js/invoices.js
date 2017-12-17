@@ -1,5 +1,7 @@
 $(function (){
+	//declare variable to store the client ID.  needed to fetch billing records
 	let clientId;
+	//set up display
 	$('#show-clients-list').hide();
 	$('#billing-records-list').hide();
 	if($('#invoice-list').has('tr').length == 0){
@@ -9,10 +11,10 @@ $(function (){
 		$('#no-invoices-message').hide();
 	};
 	
+	//click event handler to create a new invoice
 	$('#create-invoice').click(function(e) {
 		e.preventDefault();
-		$('#show-invoice-list').hide();
-		$('#show-clients-list').show();
+		//get call to fetch and display the list of clients that have unassigned billing records
 		$.get("/api/invoices/clients", function(data){
 			for(let i=0; i<data.length; i += 1){
 				$('#clients-list')
@@ -24,13 +26,20 @@ $(function (){
 				);
 			};
 		});
+		//set up view
+		$('#show-invoice-list').hide();
+		$('#show-clients-list').show();
 	});
 	
+	//click event handler when a client is selected
 	$('#clients-list').on('click', 'a', function(e) {
 		e.preventDefault();
+		//set the client ID
 		clientId = this.id;
+		//setup display
 		$('#show-clients-list').hide();
 		$('#billing-records-list').show();
+		//get mapping to fetch and display the available billing records for the client
 		$.get(`api/invoices/clients/${this.id}`, function(data){
 			billingRecordList = data;
 			for(let i=0; i<data.length; i += 1){
@@ -64,15 +73,19 @@ $(function (){
 			
 		})
 	});
+	
+	//click event handler to handle creation of the new invoice
 	$('#create-invoice-record').on('click','button', function(e) {
 		e.preventDefault();
-		console.log(billingRecordList);
+		//store the boxes that are checked on the form
 		let checkedBoxes = $('.record-ids:checked');
+		//store the recordIds for the checked boxes
 		let recordIds=[];
 		for(i=0; i<checkedBoxes.length; i += 1){
 			recordIds.push(checkedBoxes[i].value);
 		}
 
+		//create invoice to send through the request body
 		let invoice = {
 				invoiceNumber : $('#invoice-number').val(),
 				company : {
@@ -80,17 +93,19 @@ $(function (){
 				}
 		};
 		
-		
-		console.log(JSON.stringify(invoice));
+		//Create security headers
 		let headers = {
 				'X-CSRF-TOKEN' : $('#create-invoice-csfr').val()
 			};
+		//create settings
 		let settings = {
 				headers : headers,
+				//add recordIds array to the path
 				url : `/api/invoices/clients/${recordIds}`,
 				data : JSON.stringify(invoice),
 				contentType : 'application/json'
 			};
+		//post the data
 		$.post(settings).done( function(data) {
 				$('#invoice-list').append(
 						`<tr>
@@ -99,12 +114,14 @@ $(function (){
 							<td>${data.createdBy.username}</td>
 						</tr>`
 				);
+				//cleanup stuff for display
 				$('#billing-records-list').hide();
 				$('#show-invoice-list').show();
 				$('#bill-records-list').empty();
 				$('#clients-list').empty();
 				$('#invoice-list-table').show();
 				$('#no-invoices-message').hide();
+				$('#invoice-number').val('');
 				
 	});
 	});
