@@ -76,12 +76,6 @@ public class InvoicesController {
 
 		List<BillingRecord> billRecords = billRepo.findByIdIn(recordIds);
 
-		// ArrayList<BillingRecord> billRecords = new ArrayList<BillingRecord>();
-
-		/*
-		 * for (Long id : recordIds) { billRecords.add(billRepo.findOne(id)); }
-		 */
-
 		ArrayList<InvoiceLineItem> invLineItems = new ArrayList<InvoiceLineItem>();
 
 		for (int i = 0; i < billRecords.size(); i = i + 1) {

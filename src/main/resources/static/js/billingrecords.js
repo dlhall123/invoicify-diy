@@ -25,7 +25,7 @@ $(function() {
 			<td>${data.createdBy.username}</td>
 			<td>${data.description}</td>
 			<td>${data.client.name}</td>	
-			<td>${data.amount}</td>	
+			<td>$${data.amount}</td>	
 			<td>-</td>	
 			<td>-</td>
 			<td>${data.total}</td>				
@@ -66,9 +66,9 @@ $(function() {
 			<td>${data.description}</td>
 			<td>${data.client.name}</td>	
 			<td>-</td>	
-			<td>${data.rate}</td>	
+			<td>$${data.rate}</td>	
 			<td>${data.quantity}</td>
-			<td>${data.total}</td>				
+			<td>$${data.total}</td>				
 			</tr>`	
 			);
 			$('#rate-based-description').val('');
