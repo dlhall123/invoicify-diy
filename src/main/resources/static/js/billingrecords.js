@@ -8,7 +8,6 @@ $(function() {
 				id: $('#flat-fee-client-id').val()
 			}
 		};
-		console.log(JSON.stringify(billingRecord));
 		let headers = {
 			'X-CSRF-TOKEN' : $('#flat-fee-record-csrf').val()
 		};

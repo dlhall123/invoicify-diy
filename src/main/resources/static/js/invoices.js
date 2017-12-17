@@ -2,6 +2,12 @@ $(function (){
 	let clientId;
 	$('#show-clients-list').hide();
 	$('#billing-records-list').hide();
+	if($('#invoice-list').has('tr').length == 0){
+		$('#invoice-list-table').hide();
+		$('#no-invoices-message').show();
+	} else{
+		$('#no-invoices-message').hide();
+	};
 	
 	$('#create-invoice').click(function(e) {
 		e.preventDefault();
@@ -97,6 +103,8 @@ $(function (){
 				$('#show-invoice-list').show();
 				$('#bill-records-list').empty();
 				$('#clients-list').empty();
+				$('#invoice-list-table').show();
+				$('#no-invoices-message').hide();
 				
 	});
 	});

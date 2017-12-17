@@ -14,9 +14,7 @@
 	<h1>Invoices</h1>
 	
 	<a id="create-invoice" href="/invoices/clients">Create a new invoice</a>
-	
-	{{#showTable}}
-	<table>
+	<table id="invoice-list-table">
 	  <thead>
 	    <tr>
 	      <th>Number</th>
@@ -34,11 +32,8 @@
 	    {{/invoices}}
 	  </tbody>
 	</table>
-	{{/showTable}}
-	
-	{{^showTable}}
-	<div>There are no invoices.</div>
-	{{/showTable}}
+	<div id="no-invoices-message">There are no invoices.</div>
+
 	</div>
 	
 	<!-- HTML for the client list -->
